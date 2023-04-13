@@ -22,7 +22,6 @@ public class TodoItemEditor extends VerticalLayout implements KeyNotifier {
 
     private TodoItem todoItem;
 
-    TextField id = new TextField("id");
     TextField text = new TextField("text");
 
     Button save = new Button("Save", VaadinIcon.CHECK.create());
@@ -37,7 +36,7 @@ public class TodoItemEditor extends VerticalLayout implements KeyNotifier {
     public TodoItemEditor(TodoItemRepository repository) {
         this.repository = repository;
 
-        add(id, text, actions);
+        add(text, actions);
 
         // bind using naming convention
         binder.bindInstanceFields(this);
@@ -91,7 +90,7 @@ public class TodoItemEditor extends VerticalLayout implements KeyNotifier {
 
         setVisible(true);
 
-        id.focus();
+        text.focus();
     }
 
     public void setChangeHandler(ChangeHandler h) {
