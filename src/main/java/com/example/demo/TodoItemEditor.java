@@ -18,11 +18,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class TodoItemEditor extends VerticalLayout implements KeyNotifier {
 
     private final TodoItemRepository repository;
-
-
     private TodoItem todoItem;
 
-    TextField text = new TextField("text");
+    TextField text = new TextField("Description");
 
     Button save = new Button("Save", VaadinIcon.CHECK.create());
     Button cancel = new Button("Cancel");
