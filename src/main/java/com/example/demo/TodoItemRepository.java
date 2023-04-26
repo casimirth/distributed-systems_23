@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-//@RepositoryRestResource(collectionResourceRel = "rest", path="rest")
+//@RepositoryRestResource(collectionResourceRel = "rest", path="/todos")
 public interface TodoItemRepository extends JpaRepository<TodoItem, Long> {
         List<TodoItem> findByTextStartsWithIgnoreCase(String text);
 }

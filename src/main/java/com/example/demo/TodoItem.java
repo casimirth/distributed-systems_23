@@ -12,6 +12,7 @@ public class TodoItem {
     private Long id;
 
     private String text;
+    private int priority;
 
     protected TodoItem(){}
 
@@ -23,6 +24,9 @@ public class TodoItem {
         return id;
     }
 
+    public int getPrio(){return priority;}
+
+    public void setPriority(int priority){this.priority = priority;}
 
     public String getText() {
         return text;
