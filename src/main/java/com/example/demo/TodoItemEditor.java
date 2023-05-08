@@ -82,17 +82,12 @@ public class TodoItemEditor extends VerticalLayout implements KeyNotifier {
             todoItem = t;
         }
         cancel.setVisible(persisted);
-
-
         binder.setBean(todoItem);
-
         setVisible(true);
-
         text.focus();
     }
 
     public void setChangeHandler(ChangeHandler h) {
-
         changeHandler = h;
     }
 

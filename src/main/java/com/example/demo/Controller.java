@@ -1,5 +1,10 @@
 package com.example.demo;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -7,6 +12,7 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
+@RequestMapping
 public class Controller {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
@@ -32,7 +38,14 @@ public class Controller {
         return repository.save(newTodoItem);
     }
 
-    @GetMapping("/todos/{id}")
+    @GetMapping(produces = "application/json", path = "/todos/{id}")
+    @Operation(summary = "Creates a Todo Item with path variable name and default priority of 2")
+
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the item", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = TodoItem.class)) }),
+            @ApiResponse(responseCode = "400", description = "Invalid itemId supplied", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Item not found", content = @Content) })
     Optional<TodoItem> one(@PathVariable Long id){
         return repository.findById(id);
     }

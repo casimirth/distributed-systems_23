@@ -11,15 +11,21 @@ Repository for distributed systems course of University of Applied Sciences Essl
 
 ## Docker Deployment
 
-    From Scratch/ After new dev cycle:
+    From Scratch / After new dev cycle:
             mvn clean package -Pproduction
             docker build -t myimage:version .
             docker run -p 8080:8080 myimage:version
     port inside container--^     ^--outside-port
 
-    Pulled from dockerhub:
-        docker run http://insertLINKhere.com
+Pulled from dockerhub:
+    docker run http://insertLINKhere.com
+With docker compose:
+    docker-compose up --build
+
 ## API
+    CRUD REST
+    GET /greeting
+    
 
     GET /todos
     POST /todos
