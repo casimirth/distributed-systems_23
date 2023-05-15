@@ -20,11 +20,16 @@ public class TodoItem {
         this.text = text;
     }
 
+    public TodoItem(String text, int priority){
+        this.text = text;
+        this.priority = priority;
+    }
+
     public Long getId() {
         return id;
     }
 
-    public int getPrio(){return priority;}
+    public int getPriority(){return priority;}
 
     public void setPriority(int priority){this.priority = priority;}
 
@@ -37,6 +42,6 @@ public class TodoItem {
     }
     @Override
     public String toString(){
-        return String.format("TodoItem[id=%d, text='%s']", id, text);
+        return String.format("TodoItem[id=%d, text='%s', priority=%i]", id, text,priority);
     }
 }

@@ -29,8 +29,10 @@ public class MainView extends VerticalLayout{
       add(actions, grid, editor);
 
       grid.setHeight("300px");
-      grid.setColumns("id", "text");
+      grid.setWidth("500px");
+      grid.setColumns("id", "text", "priority");
       grid.getColumnByKey("id").setWidth("50px").setFlexGrow(0);
+      grid.getColumnByKey("priority").setWidth("80px").setFlexGrow(0);
 
       filter.setPlaceholder("Filter by text");
 

@@ -1,8 +1,14 @@
 services:
   vaadin:
-    container_name: vaadin
+    container_name: vaadin3
     build:
       context: .
       dockerfile: Dockerfile
+
+    environment:
+      - SERVER_PORT=8085
+      - SPRING_DATASOURCE_URL=jdbc:h2:mem:testdb
+      - SPRING_DATASOURCE_DRIVER=org.h2.Driver
+
     ports:
-      - 8080:8080
+      - 8085:8085
