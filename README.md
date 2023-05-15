@@ -25,96 +25,258 @@ Repository for distributed systems course of University of Applied Sciences Essl
 
 ### !Important Environment Variables
 The Vaadin Servlet has to leave room for for Swagger and the Springdocs. Therefore in development the setup for Vaadin needs to exclude those URLs.
-## API
-### CRUD
-# OpenAPI definition
-## Version: v0
 
-### /todos/{id}
+<h1 id="openapi-definition">OpenAPI definition v0</h1>
 
-#### GET
-##### Summary:
+> Scroll down for example requests and responses.
 
-Creates a Todo Item with path variable name and default priority of 2
+Base URLs:
 
-##### Parameters
+* <a href="http://localhost:8085">http://localhost:8085</a>
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| id | path |  | Yes | long |
+<h1 id="openapi-definition-controller">controller</h1>
 
-##### Responses
+## one
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | Found the item |
-| 400 | Invalid itemId supplied |
-| 404 | Item not found |
-
-#### PUT
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| id | path |  | Yes | long |
-
-##### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
-
-#### DELETE
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| id | path |  | Yes | long |
-
-##### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
-
-### /todos
-
-#### GET
-##### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
-
-#### POST
-##### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
-
-### /greeting
-
-#### GET
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| name | query |  | No | string |
-
-##### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+<a id="opIdone"></a>
 
 
-### Documentation
-    Open API Spec: 
-        GET /api-docs
+`GET /todos/{id}`
 
-    SwaggerUI:    
-        GET /swagger-ui.html
+*Shows a Todo Item with path variable name*
+
+<h3 id="one-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|integer(int64)|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "id": 0,
+  "text": "string",
+  "priority": 0
+}
+```
+
+<h3 id="one-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Found the item|[TodoItem](#schematodoitem)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Invalid itemId supplied|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Item not found|None|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## replaceTodoItem
+
+<a id="opIdreplaceTodoItem"></a>
 
 
-    
+`PUT /todos/{id}`
+
+*Updates todoItem by its id. If id is not already given to todoItem will create new todoItem*
+
+> Body parameter
+
+```json
+{
+  "id": 0,
+  "text": "string",
+  "priority": 0
+}
+```
+
+<h3 id="replacetodoitem-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|integer(int64)|true|none|
+|body|body|[TodoItem](#schematodoitem)|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "id": 0,
+  "text": "string",
+  "priority": 0
+}
+```
+
+<h3 id="replacetodoitem-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successfully updated todoItem|[TodoItem](#schematodoitem)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Item could not be updated|None|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## deleteTodoItem
+
+<a id="opIddeleteTodoItem"></a>
+
+
+`DELETE /todos/{id}`
+
+*Deletes todoItem by its id*
+
+<h3 id="deletetodoitem-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|integer(int64)|true|none|
+
+<h3 id="deletetodoitem-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successfully deleted todoItem|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Item could not be updated|None|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## all
+
+<a id="opIdall"></a>
+
+
+`GET /todos`
+
+*Lists all TodoItems that are available*
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "id": 0,
+  "text": "string",
+  "priority": 0
+}
+```
+
+<h3 id="all-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Found the list of items|[TodoItem](#schematodoitem)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|TodoItems not found|None|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## newTodoItem
+
+<a id="opIdnewTodoItem"></a>
+
+
+`POST /todos`
+
+*Creates a new TodoItem that are available*
+
+> Body parameter
+
+```json
+{
+  "id": 0,
+  "text": "string",
+  "priority": 0
+}
+```
+
+<h3 id="newtodoitem-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|[TodoItem](#schematodoitem)|true|none|
+
+> Example responses
+
+> 200 Response
+
+<h3 id="newtodoitem-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|TodoItem was created|[TodoItem](#schematodoitem)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|TodoItem not created|None|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## greeting
+
+<a id="opIdgreeting"></a>
+
+`GET /greeting`
+
+*Shows greeting as mentioned in the introduction to REST*
+
+<h3 id="greeting-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|name|query|string|false|none|
+
+> Example responses
+
+<h3 id="greeting-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Greeting sent back|None|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|/greeting not found|None|
+
+<h3 id="greeting-responseschema">Response Schema</h3>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+# Schemas
+
+<h2 id="tocS_TodoItem">TodoItem</h2>
+<!-- backwards compatibility -->
+<a id="schematodoitem"></a>
+<a id="schema_TodoItem"></a>
+<a id="tocStodoitem"></a>
+<a id="tocstodoitem"></a>
+
+```json
+{
+  "id": 0,
+  "text": "string",
+  "priority": 0
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|id|integer(int64)|false|none|none|
+|text|string|false|none|none|
+|priority|integer(int32)|false|none|none|
+
+
+
