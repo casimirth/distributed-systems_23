@@ -3,7 +3,7 @@ Repository for distributed systems course of University of Applied Sciences Essl
 
 ## Tech used:
 - Vaadin Grid Frontend
-- Spring Boot JPA H2 Backend
+- Spring Boot JPA (Persistence) H2 Backend (In-memory database)
 
 ## Development Installation
     
@@ -12,19 +12,19 @@ Repository for distributed systems course of University of Applied Sciences Essl
     mvn spring-boot:run
 
 ## Docker Installation
+### Pull from dockerhub:
+    docker pull casimirth/vaadin:latest
 ### From CLI / After new dev cycle (Dockerfile):
     mvn clean package -Pproduction
             docker build -t myimage_name:version .
             docker run -p 8080:8080 myimage:version
     port inside container--^     ^--outside-port
 
-### Pulled from dockerhub:
-    docker run http://insertLINKhere.com
+
 ### With docker compose (docker-compose.yaml):
     docker-compose up --build
-
-### !Important Environment Variables
-The Vaadin Servlet has to leave room for for Swagger and the Springdocs. Therefore in development the setup for Vaadin needs to exclude those URLs.
+### Important Environment Variables
+The Vaadin Servlet has to leave room for Swagger and the Springdocs. Therefore in development the setup for Vaadin needs to exclude those URLs.
 
 <h1 id="openapi-definition">OpenAPI definition v0</h1>
 
